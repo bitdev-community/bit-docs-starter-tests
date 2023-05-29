@@ -1,4 +1,4 @@
-name: Testing Bit Docs
+name: Testing Starter Bit.Dev
 
 on:
   schedule:
@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Run commands inside Docker container
+    - name: Testing teambit.community/starters/bit-dev
       run: |
         docker pull bitsrc/dev:0.1.52m
         docker run bitsrc/dev:0.1.52m /bin/bash -c "\
