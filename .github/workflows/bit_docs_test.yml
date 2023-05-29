@@ -5,6 +5,7 @@ on:
     # * is a wildcard that matches any value
     # 0 0 * * * runs every day at midnight
     - cron: '0 0 * * *'
+  workflow_dispatch:
 
 jobs:
   build:
