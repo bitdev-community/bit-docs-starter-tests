@@ -1,5 +1,5 @@
 # Bit Testing (Projects)
-This project contains tests to verify bit starter templates created by Bit Community.
+This repository contains tests to verify different projects created by Bit Community.
 
 - Bit Dev
 
