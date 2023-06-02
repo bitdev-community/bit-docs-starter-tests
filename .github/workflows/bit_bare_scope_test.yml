@@ -9,14 +9,20 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
+    container: 
+      image: bitsrc/dev:0.1.52m
+      volumes:
+        - /home:/home
     steps:
-    - name: Testing learnbit.bit-pioneers/routes/goodbye
+    - name: Creating a bare scope
+      run: mkdir bare-scope && cd bare-scope && bit init --bare
+    - name: Start the server
+      run: cd bare-scope bit start --port 4000 --no-browser &
+    - name: Wait for server to start
       run: |
-        docker pull bitsrc/dev:0.1.52m
-        docker run bitsrc/dev:0.1.52m /bin/bash -c "\
-        mkdir bare-scope && cd bare-scope && bit init --bare && bit start --port 4000 --no-browser & \
-        "
+          while ! curl --silent --head --fail http://localhost:4000; do sleep 1; done
+    - name: Test server by pinging
+      run: |
+          ping -c 5 http://localhost:4000
       continue-on-error: false
