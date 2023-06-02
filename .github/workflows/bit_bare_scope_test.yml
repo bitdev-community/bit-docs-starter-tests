@@ -15,8 +15,6 @@ jobs:
       env:
         HOME: root
     steps:
-    - name: Shell
-      run: 'echo HOME=/home/sf | tee -a $GITHUB_ENV'
     - name: Creating a bare scope
       run: mkdir bare-scope && cd bare-scope && bit init --bare
     - name: BVM Config
