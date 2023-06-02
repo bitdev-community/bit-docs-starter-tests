@@ -16,5 +16,5 @@ jobs:
     - name: Creating a bare scope
       run: mkdir bare-scope && cd bare-scope && bit init --bare
     - name: Start the server
-      run: bit start --port 4000 --no-browser
+      run: cd bare-scope && bit start --port 4000 --no-browser
       continue-on-error: false
