@@ -13,8 +13,6 @@ jobs:
     container: 
       image: bitsrc/dev:0.1.52m
     steps:
-    - name: Creating a bare scope
-      run: mkdir bare-scope && cd bare-scope && bit init --bare
-    - name: Start bare scope
-      run: bit start --port 4000 --no-browser
+    - name: Creating a bare scope and start the server
+      run: mkdir bare-scope && cd bare-scope && bit init --bare && bit start --port 4000 --no-browser
       continue-on-error: false
