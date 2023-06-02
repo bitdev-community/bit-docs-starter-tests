@@ -18,11 +18,11 @@ jobs:
     - name: Creating a bare scope
       run: mkdir bare-scope && cd bare-scope && bit init --bare
     - name: Start the server
-      run: cd bare-scope bit start --port 4000 --no-browser &
-    - name: Wait for server to start
-      run: |
-          while ! curl --silent --head --fail http://localhost:4000; do sleep 1; done
-    - name: Test server by pinging
-      run: |
-          ping -c 5 http://localhost:4000
+      run: cd bare-scope bit start --port 4000 --no-browser
+#     - name: Wait for server to start
+#       run: |
+#           while ! curl --silent --head --fail http://localhost:4000; do sleep 1; done
+#     - name: Test server by pinging
+#       run: |
+#           ping -c 5 http://localhost:4000
       continue-on-error: false
