@@ -15,6 +15,10 @@ jobs:
     steps:
     - name: Creating a bare scope
       run: mkdir bare-scope && cd bare-scope && bit init --bare
+    - name: BVM Config
+      run: bvm config
+    - name: BVM Version
+      run: bvm version
     - name: Start the server
       run: cd bare-scope && bit start --port 4000 --no-browser
       continue-on-error: false
