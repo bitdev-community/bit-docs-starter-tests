@@ -21,5 +21,4 @@ jobs:
       run: bit import learnbit.bit-pioneers/routes/goodbye
     - name: Build and Test
       run: bit build
-      
       continue-on-error: false
