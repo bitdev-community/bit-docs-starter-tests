@@ -1,0 +1,26 @@
+name: Testing Hello World
+
+on:
+  schedule:
+    # * is a wildcard that matches any value
+    # 0 0 * * * runs every day at midnight
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: 
+      image: bitsrc/dev:0.1.52m
+    steps:
+    - name: Initialize a workspace
+      run: bit new hello-world my-hello-world --env teambit.community/starters/hello-world
+    - name: Open your workspace directory
+      run: cd my-hello-world
+    - name: Run the app component
+      run: bit run hello-world-app
+    - name: Preview components
+      run: bit start
+    - name: Collaborate - check the status
+      run: bit status --strict
+      continue-on-error: false
