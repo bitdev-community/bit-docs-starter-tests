@@ -18,5 +18,14 @@ jobs:
     - name: Creating a bare scope
       run: mkdir bare-scope && cd bare-scope && bit init --bare
     - name: Start the server
-      run: cd bare-scope bit start --port 4000 --no-browser
+      run: cd bare-scope bit start --port 4000 --no-browser &
       continue-on-error: false
+    - name: Wait for server to start
+      run: |
+          while ! curl --silent --head --fail http://localhost:4000; do sleep 1; done
+    - name: Test server for HTML page
+      run: |
+          if ! curl -s -I http://localhost:4000 | grep -q "Content-Type: text/html"; then
+            echo "HTML page not found"
+            exit 1
+          fi
