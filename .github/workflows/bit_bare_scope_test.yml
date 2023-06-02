@@ -14,7 +14,7 @@ jobs:
       image: bitsrc/dev:0.1.52m
     steps:
     - name: Shell
-      run: 'echo HOME=/home/sf | sudo tee -a $GITHUB_ENV'
+      run: 'echo HOME=/home/sf | tee -a $GITHUB_ENV'
     - name: Creating a bare scope
       run: mkdir bare-scope && cd bare-scope && bit init --bare
     - name: BVM Config
