@@ -13,7 +13,7 @@ jobs:
     container: 
       image: bitsrc/dev:0.1.52m
       volumes:
-        - /home:/home
+        - /github:/host
     steps:
     - name: Creating a bare scope
       run: mkdir bare-scope && cd bare-scope && bit init --bare
