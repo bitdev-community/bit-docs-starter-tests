@@ -22,3 +22,25 @@ jobs:
     - name: Start the server
       run: cd bare-scope && bit start --port 4000 --no-browser
       continue-on-error: false
+name: Testing Hello World
+
+on:
+  schedule:
+    # * is a wildcard that matches any value
+    # 0 0 * * * runs every day at midnight
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Testing learnbit.bit-pioneers/routes/goodbye
+      run: |
+        docker pull bitsrc/dev:0.1.52m
+        docker run bitsrc/dev:0.1.52m /bin/bash -c "\
+        mkdir bare-scope && cd bare-scope && bit init --bare && bit start --port 4000 --no-browser \
+        "
+      continue-on-error: false
