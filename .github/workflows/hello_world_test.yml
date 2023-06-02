@@ -17,6 +17,8 @@ jobs:
       run: bit new hello-world my-hello-world --env teambit.community/starters/hello-world
     - name: Open your workspace directory
       run: cd my-hello-world
+    - name: Run bit install
+      run: bit install
     - name: Run the app component
       run: bit run hello-world-app
     - name: Preview components
