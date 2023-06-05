@@ -11,7 +11,7 @@ jobs:
     container: 
       image: bitcli/bit:latest-node-14.19.1
       env:
-        GITHUB_WORKSPACE: /home/github
+        GITHUB_WORKSPACE: github
     steps:
       - name: Creating a bare scope
         run: mkdir bare-scope && cd bare-scope && bit init --bare
