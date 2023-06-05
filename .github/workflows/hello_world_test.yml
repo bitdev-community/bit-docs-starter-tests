@@ -11,7 +11,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container: 
-      image: bitsrc/dev:0.1.52
+      image: bitsrc/dev:latest
     steps:
     - name: Initialize a workspace
       run: bit new hello-world my-hello-world --env teambit.community/starters/hello-world
