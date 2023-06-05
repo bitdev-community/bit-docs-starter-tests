@@ -18,7 +18,7 @@ jobs:
         run: bvm config
 
       - name: Start the server
-        run: cd bare-scope bit start --port 4000 --no-browser
+        run: cd bare-scope && bit start --port 4000 --no-browser
 
       - name: Wait for server to start
         run: |
