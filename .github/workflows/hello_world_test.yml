@@ -15,14 +15,12 @@ jobs:
     steps:
     - name: Initialize a workspace
       run: bit new hello-world my-hello-world --env teambit.community/starters/hello-world
-    - name: Open your workspace directory
-      run: cd my-hello-world
     - name: Run bit install
-      run: bit install
+      run: cd my-hello-world && bit install
     - name: Run the app component
-      run: bit run hello-world-app
+      run: cd my-hello-world && bit run hello-world-app 
     - name: Preview components
-      run: bit start
+      run: cd my-hello-world && bit start
     - name: Collaborate - check the status
-      run: bit status --strict
+      run: cd my-hello-world && bit status --strict
       continue-on-error: false
