@@ -15,23 +15,22 @@ jobs:
     steps:
     - name: Setup Hello World App
       run: |
-        bit new hello-world my-hello-world --env teambit.community/starters/hello-world && \
-        cd my-hello-world
+        bit new hello-world my-hello-world --env teambit.community/starters/hello-world
 
     - name: Run Hello World App
       run: |
-        cd my-hello-world && bit run hello-world-app > log.txt
+        cd my-hello-world && bit run hello-world-app > log.txt &
 
     - name: Sleep
       run: sleep 20
 
     - name: Check App Logs
       run: |
-        cd my-hello-world && grep -q "app is running on http://localhost:" log.txt
+        cd my-hello-world && grep -q "app is running on http://localhost:" log.txt 
     
     - name: Start Bit
       run: |
-        cd my-hello-world && bit start > log.txt
+        cd my-hello-world && bit start > log.txt &
     
     - name: Sleep
       run: sleep 20
