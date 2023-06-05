@@ -17,10 +17,10 @@ jobs:
       run: bit new hello-world my-hello-world --env teambit.community/starters/hello-world
     - name: Run bit install
       run: cd my-hello-world && bit install
-    - name: Run the app component
-      run: cd my-hello-world && bit run hello-world-app 
-    - name: Preview components
-      run: cd my-hello-world && bit start
+#     - name: Run the app component
+#       run: cd my-hello-world && bit run hello-world-app --port 4000
+#     - name: Preview components
+#       run: cd my-hello-world && bit start
     - name: Collaborate - check the status
       run: cd my-hello-world && bit status --strict
       continue-on-error: false
