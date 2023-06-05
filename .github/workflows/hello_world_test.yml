@@ -2,8 +2,6 @@ name: QuickStart Test - Hello World
 
 on:
   schedule:
-    # * is a wildcard that matches any value
-    # 0 0 * * * runs every day at midnight
     - cron: '0 0 * * *'
   workflow_dispatch:
 
@@ -18,7 +16,9 @@ jobs:
       run: |
         docker run bitsrc/dev:latest /bin/bash -c "\
         bit new hello-world my-hello-world --env teambit.community/starters/hello-world && \
-        cd my-hello-world && bit run hello-world-app > log.txt && sleep 20 & grep -q "app is running on http://localhost:" log.txt && \
-        bit start > log.txt && sleep 20 & grep -q "Bit server is running on http://localhost:" log.txt \
+        cd my-hello-world && bit run hello-world-app > log.txt && \
+        sleep 20 && grep -q \"app is running on http://localhost:\" log.txt && \
+        bit start > log.txt && \
+        sleep 20 && grep -q \"Bit server is running on http://localhost:\" log.txt \
         "
       continue-on-error: false
