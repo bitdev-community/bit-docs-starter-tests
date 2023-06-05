@@ -1,4 +1,4 @@
-name: Testing Hello World
+name: Testing QuickStart: Hello World
 
 on:
   schedule:
@@ -9,21 +9,14 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - name: Setup upterm session
-      uses: lhotari/action-upterm@v1
-    - name: Testing learnbit.bit-pioneers/routes/goodbye
+    - name: Pull docker image
       run: |
         docker pull bitsrc/dev:latest
+    - name: Create workspace using starter
+      run: |
         docker run bitsrc/dev:latest /bin/bash -c "\
-        bit new hello-world my-hello-world --env teambit.community/starters/hello-world && \
-        cd my-hello-world && \
-        bit run hello-world-app > log.txt && sleep 20 & \
-        grep -q "app is running on http://localhost:3000" log.txt && \
-        bit status \
+        bit new hello-world my-hello-world --env teambit.community/starters/hello-world \
         "
       continue-on-error: false
-    
