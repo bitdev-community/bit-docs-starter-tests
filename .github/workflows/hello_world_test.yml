@@ -9,20 +9,18 @@ on:
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
-    container: 
-      image: bitsrc/dev:latest
-      env:
-        GITHUB_WORKSPACE: /home/github
+
     steps:
-    - name: Initialize a workspace
-      run: bit new hello-world my-hello-world --env teambit.community/starters/hello-world
-    - name: Run bit install
-      run: cd my-hello-world && bit install
-#     - name: Run the app component
-#       run: cd my-hello-world && bit run hello-world-app --port 4000
-#     - name: Preview components
-#       run: cd my-hello-world && bit start
-    - name: Collaborate - check the status
-      run: cd my-hello-world && bit status --strict
+    - name: Testing learnbit.bit-pioneers/routes/goodbye
+      run: |
+        docker pull bitsrc/dev:latest
+        docker run bitsrc/dev:latest /bin/bash -c "\
+        bit new hello-world my-hello-world --env teambit.community/starters/hello-world && \
+        cd my-hello-world && \
+        bit install && \
+        bit build \
+        "
       continue-on-error: false
+    
