@@ -8,17 +8,36 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: bitsrc/dev:latest
+      options: --entrypoint /bin/bash
+
     steps:
-    - name: Pull docker image
+    - name: Setup Hello World App
       run: |
-        docker pull bitsrc/dev:latest
-    - name: Test starter
-      run: |
-        docker run bitsrc/dev:latest /bin/bash -c "\
         bit new hello-world my-hello-world --env teambit.community/starters/hello-world && \
-        cd my-hello-world && bit run hello-world-app > log.txt && \
-        sleep 20 && grep -q \"app is running on http://localhost:\" log.txt && \
-        bit start > log.txt && \
-        sleep 20 && grep -q \"Bit server is running on http://localhost:\" log.txt \
-        "
-      continue-on-error: false
+        cd my-hello-world
+
+    - name: Run Hello World App
+      run: |
+        cd my-hello-world && bit run hello-world-app > log.txt
+
+    - name: Sleep
+      run: sleep 20
+
+    - name: Check App Logs
+      run: |
+        cd my-hello-world && grep -q "app is running on http://localhost:" log.txt
+    
+    - name: Start Bit
+      run: |
+        cd my-hello-world && bit start > log.txt
+    
+    - name: Sleep
+      run: sleep 20
+
+    - name: Check Bit Logs
+      run: |
+        cd my-hello-world && grep -q "Bit server is running on http://localhost:" log.txt
+
+    continue-on-error: false
