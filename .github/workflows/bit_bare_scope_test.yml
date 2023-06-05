@@ -19,7 +19,6 @@ jobs:
 
       - name: Start the server
         run: cd bare-scope bit start --port 4000 --no-browser
-        continue-on-error: false
 
       - name: Wait for server to start
         run: |
@@ -31,3 +30,4 @@ jobs:
             echo "HTML page not found"
             exit 1
           fi
+        continue-on-error: false
