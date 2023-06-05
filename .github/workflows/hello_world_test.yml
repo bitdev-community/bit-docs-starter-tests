@@ -19,7 +19,8 @@ jobs:
         docker run bitsrc/dev:latest /bin/bash -c "\
         bit new hello-world my-hello-world --env teambit.community/starters/hello-world && \
         cd my-hello-world && 
-        bit run hello-world-app & sleep 20 & \
+        bit run hello-world-app > log.txt & \
+        grep -q "app is running on http://localhost:3000" log.txt && \
         bit status \
         "
       continue-on-error: false
