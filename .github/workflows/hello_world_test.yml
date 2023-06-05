@@ -18,7 +18,7 @@ jobs:
         docker pull bitsrc/dev:0.1.48
         docker run bitsrc/dev:latest /bin/bash -c "\
         bit new hello-world my-hello-world --env teambit.community/starters/hello-world && \
-        cd my-hello-world && 
+        cd my-hello-world && \
         bit run hello-world-app > log.txt && sleep 20 & \
         grep -q "app is running on http://localhost:3000" log.txt && \
         bit status \
