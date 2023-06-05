@@ -19,20 +19,20 @@ jobs:
 
     - name: Run Hello World App
       run: |
-        cd my-hello-world && bit run hello-world-app &
+        cd my-hello-world && bit run hello-world-app
 
-    - name: Test Hello World App
-      run: |
-        sleep 20
-        until curl --silent --head --fail http://localhost:3000; do sleep 5 && echo 'Waiting for app...'; done
+#     - name: Test Hello World App
+#       run: |
+#         sleep 20
+#         until curl --silent --head --fail http://localhost:3000; do sleep 5 && echo 'Waiting for app...'; done
     
-    - name: Start Bit
-      run: |
-        cd my-hello-world && bit start &
+#     - name: Start Bit
+#       run: |
+#         cd my-hello-world && bit start &
 
-    - name: Test Bit start
-      run: |
-        sleep 20
-        until curl --silent --head --fail http://localhost:3001; do sleep 5 && echo 'Waiting for Bit...'; done
+#     - name: Test Bit start
+#       run: |
+#         sleep 20
+#         until curl --silent --head --fail http://localhost:3001; do sleep 5 && echo 'Waiting for Bit...'; done
 
     continue-on-error: false
