@@ -1,4 +1,4 @@
-name: Testing QuickStart: Hello World
+name: Testing QuickStart - Hello World
 
 on:
   schedule:
