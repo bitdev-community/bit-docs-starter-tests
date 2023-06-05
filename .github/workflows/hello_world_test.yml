@@ -19,24 +19,20 @@ jobs:
 
     - name: Run Hello World App
       run: |
-        cd my-hello-world && bit run hello-world-app > log.txt &
+        cd my-hello-world && bit run hello-world-app &
 
-    - name: Sleep
-      run: sleep 20
-
-    - name: Check App Logs
+    - name: Wait for App to start
       run: |
-        cd my-hello-world && grep -q "app is running on http://localhost:" log.txt 
+        sleep 20
+        until curl --silent --head --fail http://localhost:3000; do sleep 1 && echo 'Waiting for app...'; done
     
     - name: Start Bit
       run: |
-        cd my-hello-world && bit start > log.txt &
-    
-    - name: Sleep
-      run: sleep 20
+        cd my-hello-world && bit start &
 
-    - name: Check Bit Logs
+    - name: Wait for Bit to start
       run: |
-        cd my-hello-world && grep -q "Bit server is running on http://localhost:" log.txt
+        sleep 20
+        until curl --silent --head --fail http://localhost:3001; do sleep 1 && echo 'Waiting for Bit...'; done
 
     continue-on-error: false
