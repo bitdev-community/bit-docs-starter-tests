@@ -17,6 +17,8 @@ jobs:
         run: mkdir bare-scope && cd bare-scope && bit init --bare
       - name: Current working directory
         run: pwd
+      - name: Original home folder
+        run: cd /home/bituser && ls
       - name: BVM Config
         run: bvm config
       - name: Start the server
