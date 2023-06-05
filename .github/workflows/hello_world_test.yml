@@ -1,4 +1,4 @@
-name: Testing QuickStart - Hello World
+name: QuickStart Test - Hello World
 
 on:
   schedule:
@@ -14,9 +14,14 @@ jobs:
     - name: Pull docker image
       run: |
         docker pull bitsrc/dev:latest
-    - name: Create workspace using starter
+    - name: Use starter
       run: |
         docker run bitsrc/dev:latest /bin/bash -c "\
         bit new hello-world my-hello-world --env teambit.community/starters/hello-world \
+        "
+    - name: Run
+      run: |
+        docker run bitsrc/dev:latest /bin/bash -c "\
+        cd my-hello-world && bit run hello-world-app > log.txt && sleep 20 & grep -q "app is running on http://localhost:3000" log.txt \
         "
       continue-on-error: false
