@@ -15,6 +15,8 @@ jobs:
     steps:
       - name: Creating a bare scope
         run: mkdir bare-scope && cd bare-scope && bit init --bare
+      - name: Current working directory
+        run: pwd
       - name: BVM Config
         run: bvm config
       - name: Start the server
