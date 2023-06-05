@@ -18,9 +18,10 @@ jobs:
         docker pull bitsrc/dev:0.1.48
         docker run bitsrc/dev:latest /bin/bash -c "\
         bit new hello-world my-hello-world --env teambit.community/starters/hello-world && \
-        cd my-hello-world && \
-        bit install && \
-        bit build \
+        cd my-hello-world && 
+        timeout 60 bit run hello-world-app \
+        timeout 120 bit start && \
+        bit status \
         "
       continue-on-error: false
     
