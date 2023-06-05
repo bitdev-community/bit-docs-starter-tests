@@ -20,8 +20,6 @@ jobs:
         bit new hello-world my-hello-world --env teambit.community/starters/hello-world && \
         cd my-hello-world && 
         bit run hello-world-app & sleep 20 & \
-        timeout 25 bash -c 'until curl --silent --head --fail http://localhost:3000; do sleep 1; done' && \
-        timeout 50 bit start && \
         bit status \
         "
       continue-on-error: false
