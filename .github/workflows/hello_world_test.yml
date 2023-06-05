@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     container: 
       image: bitsrc/dev:latest
+      env:
+        GITHUB_WORKSPACE: /home/github
     steps:
     - name: Initialize a workspace
       run: bit new hello-world my-hello-world --env teambit.community/starters/hello-world
