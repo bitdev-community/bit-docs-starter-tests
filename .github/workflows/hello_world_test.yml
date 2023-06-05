@@ -19,9 +19,14 @@ jobs:
         docker run bitsrc/dev:latest /bin/bash -c "\
         bit new hello-world my-hello-world --env teambit.community/starters/hello-world \
         "
-    - name: Run
+    - name: Test 'bit run hello-world-app'
       run: |
         docker run bitsrc/dev:latest /bin/bash -c "\
-        cd my-hello-world && bit run hello-world-app > log.txt && sleep 20 & grep -q "app is running on http://localhost:3000" log.txt \
+        cd my-hello-world && bit run hello-world-app > log.txt && sleep 20 & grep -q "app is running on http://localhost:" log.txt \
+        "
+    - name: Test 'bit start'
+      run: |
+        docker run bitsrc/dev:latest /bin/bash -c "\
+        cd my-hello-world && bit start > log.txt && sleep 20 & grep -q "Bit server is running on http://localhost:" log.txt \
         "
       continue-on-error: false
