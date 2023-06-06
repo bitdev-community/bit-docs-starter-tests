@@ -20,7 +20,7 @@ jobs:
     - name: Import component "learnbit.bit-pioneers/routes/goodbye"
       run: bit import learnbit.bit-pioneers/routes/goodbye
     - name: Bit start
-      run: bit start
+      run: bit start --log=error
 #     - name: Test dev server
 #       run: |
 #           sleep 20
