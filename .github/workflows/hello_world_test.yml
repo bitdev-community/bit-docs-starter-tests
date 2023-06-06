@@ -8,31 +8,21 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: bitsrc/dev:latest
-      options: --entrypoint /bin/bash
-
+    container: 
+      image: bitsrc/ops:latest
+    env:
+        HOME: /home/bituser
+        
     steps:
     - name: Setup Hello World App
       run: |
         bit new hello-world my-hello-world --env teambit.community/starters/hello-world
-
     - name: Run Hello World App
       run: |
-        cd my-hello-world && bit run hello-world-app
-
-#     - name: Test Hello World App
-#       run: |
-#         sleep 20
-#         until curl --silent --head --fail http://localhost:3000; do sleep 5 && echo 'Waiting for app...'; done
-    
-#     - name: Start Bit
-#       run: |
-#         cd my-hello-world && bit start &
-
-#     - name: Test Bit start
-#       run: |
-#         sleep 20
-#         until curl --silent --head --fail http://localhost:3001; do sleep 5 && echo 'Waiting for Bit...'; done
-
+        cd my-hello-world && bit run hello-world-app &
+    - name: Test Hello World App
+      run: |
+        sleep 60
+        curl http://localhost:3000
+  
     continue-on-error: false
