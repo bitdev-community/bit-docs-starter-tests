@@ -2,8 +2,6 @@ name: Bit Pioneers
 
 on:
   schedule:
-    # * is a wildcard that matches any value
-    # 0 0 * * * runs every day at midnight
     - cron: '0 0 * * *'
   workflow_dispatch:
 
@@ -12,17 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     container: 
       image: bitsrc/dev:latest
+    services:
+      scope:
+        image: bitcli/bit-server:latest
+        ports:
+          - 3000:3000
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
     - name: Creating a bit workspace
       run: bit init
-    - name: Import component "learnbit.bit-pioneers/ui/loader"
-      run: bit import learnbit.bit-pioneers/ui/loader
-    - name: Import component "learnbit.bit-pioneers/routes/goodbye"
-      run: bit import learnbit.bit-pioneers/routes/goodbye
-    - name: Bit start
-      run: bit start --log=error
-#     - name: Test dev server
-#       run: |
-#           sleep 20
-#           until curl --silent --head --fail http://localhost:3000; do sleep 5 && echo 'Waiting for app...'; done
       continue-on-error: false
