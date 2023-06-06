@@ -16,8 +16,10 @@ jobs:
         ports:
           - 3000:3000
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+    - name: Test scope
+      run: |
+        sleep 10  # wait for the service to start
+        curl http://localhost:3000
 
     - name: Creating a bit workspace
       run: bit init
