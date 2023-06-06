@@ -19,6 +19,10 @@ jobs:
       run: bit import learnbit.bit-pioneers/ui/loader
     - name: Import component "learnbit.bit-pioneers/routes/goodbye"
       run: bit import learnbit.bit-pioneers/routes/goodbye
-    - name: Build and Test
-      run: bit build
+    - name: Bit start
+      run: bit start &
+    - name: Test dev server
+      run: |
+          sleep 20
+          until curl --silent --head --fail http://localhost:3000; do sleep 5 && echo 'Waiting for app...'; done
       continue-on-error: false
