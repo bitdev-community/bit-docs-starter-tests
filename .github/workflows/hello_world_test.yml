@@ -19,5 +19,8 @@ jobs:
         bit new hello-world my-hello-world --env teambit.community/starters/hello-world
     - name: Run Hello World App and Test
       run: |
-        cd my-hello-world && bit run hello-world-app & sleep 120 && curl http://localhost:3000
+        cd bare-scope 
+        bit start --port 4000 --no-browser &
+        sleep 60
+        curl http://localhost:4000 || echo "Server didn't start in time" && exit 1
     continue-on-error: false
