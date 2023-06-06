@@ -15,8 +15,8 @@ jobs:
     steps:
     - name: Testing teambit.community/starters/bit-dev
       run: |
-        docker pull bitsrc/dev:0.1.52m
-        docker run bitsrc/dev:0.1.52m /bin/bash -c "\
+        docker pull bitsrc/dev:latest
+        docker run bitsrc/dev:latest /bin/bash -c "\
         bit new bit-dev my-bit-dev-ws --aspect teambit.community/starters/bit-dev && cd my-bit-dev-ws && \
         bit install && \
         bit build \
