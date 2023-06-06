@@ -21,6 +21,10 @@ jobs:
 #         sleep 30  # wait for the service to start
 #         curl http://localhost:3000
 
+    - name: BVM Config
+      run: bvm config
+    - name: CD home
+      run: cd home && ls
     - name: Creating a bit workspace
       run: bit init
     - name: Creating a bit workspace
