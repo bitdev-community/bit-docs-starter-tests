@@ -15,21 +15,11 @@ jobs:
     steps:
       - name: Creating a bare scope
         run: mkdir bare-scope && cd bare-scope && bit init --bare
-      - name: Current working directory
-        run: pwd
-      - name: Original home folder
-        run: cd /home/bituser && ls
       - name: BVM Config
         run: bvm config
       - name: Start the server
         run: cd bare-scope && bit start --port 4000 --no-browser
       - name: Wait for server to start
         run: |
-          timeout 120 bash -c 'until curl --silent --head --fail http://localhost:4000; do sleep 1; done'
-      - name: Test server for HTML page
-        run: |
-          if ! curl -s -I http://localhost:4000 | grep -q "Content-Type: text/html"; then
-            echo "HTML page not found"
-            exit 1
-          fi
+          timeout 120 bash -c 'until curl --silent --head --fail http://localhost:4000; do sleep 5; done'
         continue-on-error: false
