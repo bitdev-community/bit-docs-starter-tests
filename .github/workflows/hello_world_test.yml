@@ -33,4 +33,13 @@ jobs:
       run: |
         cd my-hello-world
         bit status
+    - name: Create a remote scope, compile and export
+      run: |
+        mkdir bare-scope && cd bare-scope && bit init --bare
+        bit start --port 4000 --no-browser & sleep 120 && curl http://localhost:4000
+        cd ../my-hello-world
+        bit remote add http://localhost:4000
+        bit link
+        bit compile
+        bit tag --message "initial tag"
     continue-on-error: false
