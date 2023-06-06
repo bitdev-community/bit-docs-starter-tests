@@ -11,29 +11,14 @@ jobs:
     container: 
       image: bitsrc/ops:latest
     env:
-        HOME: /home/bituser
-    services:
-      scope:
-        image: bitcli/bit-server:latest
-        ports:
-          - 3000:3000
+      HOME: /home/bituser
     steps:
-#     - name: Test scope
-#       run: |
-#         sleep 30  # wait for the service to start
-#         curl http://localhost:3000
-    - name: Print HOME
-      run: echo $HOME
-    - name: BVM Config
-      run: bvm config
-      env:
-        HOME: /home/bituser
     - name: Creating a bit workspace
       run: bit init
-      env:
-        HOME: /home/bituser
-    - name: Creating a bit workspace
-      run: bit start
-      env:
-        HOME: /home/bituser
+    - name: Import component "learnbit.bit-pioneers/ui/loader"
+      run: bit import learnbit.bit-pioneers/ui/loader
+    - name: Import component "learnbit.bit-pioneers/routes/goodbye"
+      run: bit import learnbit.bit-pioneers/routes/goodbye
+    - name: Build and Test
+      run: bit build
       continue-on-error: false
