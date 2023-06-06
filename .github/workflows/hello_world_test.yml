@@ -29,4 +29,8 @@ jobs:
         bit start &
         sleep 120
         curl http://localhost:3000
+    - name: Collaborate
+      run: |
+        cd my-hello-world
+        bit status
     continue-on-error: false
