@@ -11,7 +11,7 @@ jobs:
     container: 
       image: bitsrc/ops:latest
     env:
-        HOME: /home/bituser
+      HOME: /home/bituser
         
     steps:
     - name: Setup Hello World App
