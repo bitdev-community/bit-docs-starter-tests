@@ -10,8 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     container: 
       image: bitsrc/ops:latest
-      env:
-        HOME: /home/bituser
     services:
       scope:
         image: bitcli/bit-server:latest
@@ -22,7 +20,8 @@ jobs:
 #       run: |
 #         sleep 30  # wait for the service to start
 #         curl http://localhost:3000
-
+    - name: Set home
+      run: 'echo HOME=/home/bituser | sudo tee -a $GITHUB_ENV'
     - name: BVM Config
       run: bvm config
     - name: CD home
