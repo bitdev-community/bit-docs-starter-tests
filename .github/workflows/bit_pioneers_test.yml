@@ -26,10 +26,14 @@ jobs:
       run: echo $HOME
     - name: BVM Config
       run: bvm config
-    - name: CD home
-      run: cd /home && ls
+      env:
+        HOME: /home/bituser
     - name: Creating a bit workspace
       run: bit init
+      env:
+        HOME: /home/bituser
     - name: Creating a bit workspace
       run: bit start
+      env:
+        HOME: /home/bituser
       continue-on-error: false
