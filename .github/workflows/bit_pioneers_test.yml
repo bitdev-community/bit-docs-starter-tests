@@ -22,6 +22,8 @@ jobs:
 #         curl http://localhost:3000
     - name: Set home
       run: 'echo HOME=/home/bituser | sudo tee -a $GITHUB_ENV'
+    - name: Print HOME
+      run: echo $HOME
     - name: BVM Config
       run: bvm config
     - name: CD home
