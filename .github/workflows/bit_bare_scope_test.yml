@@ -9,9 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container: 
-      image: bitcli/bit:latest-node-14.19.1
-      env:
-        GITHUB_WORKSPACE: github
+      image: bitsrc/dev:latest
     steps:
       - name: Creating a bare scope
         run: mkdir bare-scope && cd bare-scope && bit init --bare
