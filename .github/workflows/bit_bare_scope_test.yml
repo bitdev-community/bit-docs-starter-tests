@@ -14,7 +14,7 @@ jobs:
       - name: Creating a bare scope
         run: mkdir bare-scope && cd bare-scope && bit init --bare
       - name: Status log
-        run: bit status --log
+        run: cd bare-scope && bit status --log
       - name: BVM Config
         run: bvm config
       - name: Start the server
