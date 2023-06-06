@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     container: 
       image: bitsrc/ops:latest
+      env:
+        HOME: /home/bituser
     services:
       scope:
         image: bitcli/bit-server:latest
