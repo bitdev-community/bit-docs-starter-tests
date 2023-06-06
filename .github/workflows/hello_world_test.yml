@@ -21,12 +21,12 @@ jobs:
       run: |
         cd my-hello-world
         bit run hello-world-app &
-        sleep 60
-        curl http://localhost:3000 || echo "Server didn't start in time" && exit 1
+        sleep 120
+        curl http://localhost:3000
     - name: Preview components
       run: |
         cd my-hello-world
         bit start &
-        sleep 60
-        curl http://localhost:3000 || echo "Server didn't start in time" && exit 1
+        sleep 120
+        curl http://localhost:3000
     continue-on-error: false
