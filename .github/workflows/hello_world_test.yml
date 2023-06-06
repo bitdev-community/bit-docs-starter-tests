@@ -42,4 +42,5 @@ jobs:
         bit link
         bit compile
         bit tag --message "initial tag"
+        bit export
     continue-on-error: false
