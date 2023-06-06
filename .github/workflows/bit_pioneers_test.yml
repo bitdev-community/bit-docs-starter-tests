@@ -24,7 +24,7 @@ jobs:
     - name: BVM Config
       run: bvm config
     - name: CD home
-      run: cd home && ls
+      run: cd /home && ls
     - name: Creating a bit workspace
       run: bit init
     - name: Creating a bit workspace
