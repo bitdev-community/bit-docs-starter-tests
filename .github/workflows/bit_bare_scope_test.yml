@@ -1,3 +1,4 @@
+
 name: Bit Bare Scope Test
 
 on:
@@ -12,15 +13,10 @@ jobs:
       image: bitsrc/ops:latest
     env:
       HOME: /home/bituser
-    services:
-      barescope:
-        image: bitcli/bit-server:latest
-        ports:
-          - 3000:3000  
+      
     steps:
-    - name: Test barescope
-      run: |
-        sleep 120
-        curl http://barescope:3000
+    - name: Creating a bare scope
+      run: mkdir bare-scope && cd bare-scope && bit init --bare
+    - name: Start the server and test
+      run: cd bare-scope && bit start --port 4000 --no-browser & sleep 120 && curl http://localhost:4000
       continue-on-error: false
-
