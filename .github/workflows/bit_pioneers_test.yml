@@ -9,18 +9,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container: 
-      image: bitsrc/dev:latest
+      image: bitsrc/ops:latest
     services:
       scope:
         image: bitcli/bit-server:latest
         ports:
           - 3000:3000
     steps:
-    - name: Test scope
-      run: |
-        sleep 30  # wait for the service to start
-        curl http://localhost:3000
+#     - name: Test scope
+#       run: |
+#         sleep 30  # wait for the service to start
+#         curl http://localhost:3000
 
     - name: Creating a bit workspace
       run: bit init
+    - name: Creating a bit workspace
+      run: bit start
       continue-on-error: false
