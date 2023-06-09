@@ -5,16 +5,17 @@ on:
   schedule:
     - cron: '0 0 * * *'
   workflow_dispatch:
-
+env:
+  HOME: /home/bituser
 jobs:
   build:
     runs-on: ubuntu-latest
     container: 
       image: bitsrc/ops:latest
-    env:
-      HOME: /home/bituser
       
     steps:
+    - name: Check Home
+      run: echo $HOME
     - name: Creating a bare scope
       run: mkdir bare-scope && cd bare-scope && bit init --bare
     - name: Start the server and test
