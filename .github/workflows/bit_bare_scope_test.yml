@@ -10,7 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     container: 
       image: bitsrc/ops:latest
-      
+    env:
+      HOME: /home/bituser
     steps:
     - name: Check Home
       run: echo $HOME
