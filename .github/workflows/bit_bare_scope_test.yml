@@ -14,8 +14,8 @@ jobs:
       HOME: /home/bituser
       
     steps:
-    - name: Creating a bare scope
-      run: mkdir bare-scope && cd bare-scope && bit init --bare
-    - name: Start the server and test
-      run: cd bare-scope && bit start --port 4000 --no-browser & checkserver http://localhost:4000
+    - name: Creating workspace
+      run: mkdir my-workspace && bit init
+    - name: Start a bare scope and add to workspace
+      run: barescope my-scope my-workspace
       continue-on-error: false
