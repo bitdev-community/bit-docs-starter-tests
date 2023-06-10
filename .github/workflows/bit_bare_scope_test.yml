@@ -17,5 +17,10 @@ jobs:
     - name: Creating workspace
       run: mkdir my-workspace && bit init
     - name: Start a bare scope and add to workspace
-      run: barescope my-scope my-workspace
+      run: |
+        barescope my-scope1 my-workspace
+        barescope my-scope2 my-workspace
+        barescope my-scope3 my-workspace
+    - name: Check Bare Scope directories
+      run: ls
       continue-on-error: false
