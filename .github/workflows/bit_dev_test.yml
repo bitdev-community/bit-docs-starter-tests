@@ -1,24 +1,40 @@
-name: Testing Starter Bit.Dev
+name: Bit.Dev - Starter Test
 
 on:
   schedule:
-    # * is a wildcard that matches any value
-    # 0 0 * * * runs every day at midnight
     - cron: '0 0 * * *'
   workflow_dispatch:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
+    container: 
+      image: bitsrc/ops:latest
+    env:
+      HOME: /home/bituser
+        
     steps:
-    - name: Testing teambit.community/starters/bit-dev
+    - name: Initialize a workspace
       run: |
-        docker pull bitsrc/dev:latest
-        docker run bitsrc/dev:latest /bin/bash -c "\
-        bit new bit-dev my-bit-dev-ws --aspect teambit.community/starters/bit-dev && cd my-bit-dev-ws && \
-        bit install && \
-        bit build \
-        "
-      continue-on-error: false
+        bit new bit-dev my-bit-dev-ws --aspect teambit.community/starters/bit-dev
+    - name: Run the app component
+      run: |
+        cd my-bit-dev-ws
+        bit run bit-dev &
+        checkserver http://localhost:3000
+    - name: Preview components
+      run: |
+        cd my-bit-dev-ws
+        bit start &
+        checkserver http://localhost:3000
+    - name: Collaborate
+      run: |
+        cd my-bit-dev-ws
+        bit status
+    - name: Create a local scope, compile
+      run: |
+        cd my-bit-dev-ws
+        bit link
+        bit compile
+        bit tag --message "initial tag"
+    continue-on-error: false
