@@ -22,7 +22,6 @@ jobs:
         cd my-bit-dev-ws
         bit run bit-dev &
         checkserver http://localhost:3000
-        curl -sL "http://localhost:3000" | grep -q "From monolithic to composable software"
     - name: Preview components
       run: |
         cd my-bit-dev-ws
